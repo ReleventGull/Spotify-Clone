@@ -1,0 +1,23 @@
+html, body, #app {
+    height: 100%;
+    margin: 0;
+}
+
+.loginRegisterPage {
+    height: 100%;
+}
+
+.loginRegisterHeader {
+    height: 100px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+}
+
+.spotifyLogo {
+    height: 50%;
+    margin-top: 20px;
+}
