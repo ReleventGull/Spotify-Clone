@@ -172,3 +172,35 @@ html, body, #app {
     filter:drop-shadow(0 1px .01px black);
     transition: .2s;
 }
+
+/***************************************************************************************************************************************/
+
+.accesPage {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.centerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20%
+}
+
+.centerContainer button {
+    background-color: #1ed760;
+    height: 90px;
+    width: 300px;
+    border-radius: 500px;
+    font-size: 1.6em;
+    transition: .3s;
+    border: none
+}
+.centerContainer button:hover {
+    background-color: #191414;
+
+    color: #1ed760;
+}
