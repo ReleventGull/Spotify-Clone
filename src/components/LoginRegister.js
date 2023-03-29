@@ -1,6 +1,8 @@
+import {useState} from 'react'
 import { Link } from "react-router-dom"
 
 const LoginRegister = () => {
+    const [viewPassword, setViewPassword] = useState(false)
     return (
         <div className="loginRegisterPage">
             <div className="loginRegisterHeader">
@@ -11,17 +13,25 @@ const LoginRegister = () => {
                 <form className="loginForm">
                    <div className="input1">
                         <label>Email address or username</label>
-                        <input placeholder="Email address or username"></input>
+                        <div className="usernameBox">   
+                            <input placeholder="Email address or username"></input>
+                        </div>
                    </div>
                    <div className="input1">
                         <label>Password</label>
-                        <input placeholder="Password"></input>
+                            <div className="passwordBox">
+                                <input className="passwordInput" type={viewPassword ? null : 'password'} placeholder="Password"></input>
+                                <div className='viewPassword'>
+                                    <img  onClick={() => setViewPassword(pre => !pre)} className='viewPasswordImage'  src={viewPassword ? "/images/eye.png" : "/images/closedeye.png"} />
+                                </div>
+                                
+                            </div> 
                    </div>
                    <div className="bottomContainer2">
                         <div className="loginBox">
                             <div className="checkBoxContainer">
                                 <input type='checkbox'/> 
-                                <span>Remmber me</span>
+                                <span>Remember me</span>
                             </div>
                             <button className="loginButton">LOG IN</button>
                         </div>
