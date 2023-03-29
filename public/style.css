@@ -1,0 +1,129 @@
+@font-face {
+    font-family: MyWebFont;
+    src: url(./fonts/circularstd-black-webfont.woff) format('woff2')
+}
+@font-face {
+    font-family: MyWebFontThing;
+    src: url(./fonts/circularstd-light-webfont.woff2) format('woff2');
+}
+html, body, #app {
+    height: 100%;
+    margin: 0;
+    font-family: MyWebFont;
+}
+
+
+.loginRegisterPage {
+    height: 100%;
+}
+
+.loginRegisterHeader {
+    height: 100px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+}
+
+.spotifyLogo {
+    height: 50%;
+    margin-top: 20px;
+}
+.bottomContainer {
+
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 60px;
+    
+}
+
+.input1 {
+    gap: 12px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.input1 input {
+    height: 30px;
+    font-size: 1.2em;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 8px;
+}
+
+.loginButton {
+    color: black;
+    background-color:#1ed760;
+    font-weight: bolder;
+    letter-spacing: .5px;
+    border: none;
+    height: 48px;
+    width: 120px;
+    border-radius: 500px;
+}
+.bottomContainer2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.loginBox {
+    display: flex;
+    width: 650px;
+    justify-content: space-around;
+    
+}
+.checkBoxContainer {
+    display: flex;
+    align-items: center;
+}
+.checkBoxContainer span {
+    font-weight:lighter;
+}
+
+.borderLogin {
+    width: 500px;
+    border-bottom: 2px solid lightgray;
+    margin-top: 10px;
+}
+
+.bottomContainer3 {
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bottomContainer3 a {
+    border: 1px solid lightgray;
+    width: 80%;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    transition: .2s;
+    font-family: MyWebFontThing
+}
+
+.bottomContainer a:hover{
+    transition: .2s linear;
+    background-color:#1ed760;
+}
