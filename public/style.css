@@ -58,14 +58,6 @@ html, body, #app {
     width: 500px;
 }
 
-.input1 input {
-    height: 30px;
-    font-size: 1.2em;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid gray;
-    padding: 8px;
-}
 
 .loginButton {
     color: black;
@@ -126,4 +118,57 @@ html, body, #app {
 .bottomContainer a:hover{
     transition: .2s linear;
     background-color:#1ed760;
+}
+
+.input1 input {
+    border: none;
+    height: 80%;
+    width: 90%;
+    border-radius: 5px;
+    font-size: 1.3em;
+}
+
+.input1 input:focus {
+    border: none;
+    outline: none;
+
+}
+
+.passwordBox {
+    display: flex;
+    padding: 5px;
+    display: flex;
+    width: 100%;
+    border: 1px solid gray;
+    height: 40px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.usernameBox {
+    display: flex;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    height: 40px;
+    align-items: center;
+}
+
+.viewPassword {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 47px;
+}
+.viewPasswordImage {
+    height: 34px;
+    width: 34px;
+    cursor: pointer;
+    transition: .2s;
+}
+.viewPasswordImage:hover {
+    filter:drop-shadow(0 1px .01px black);
+    transition: .2s;
 }
