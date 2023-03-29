@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 
 const LoginRegister = () => {
     return (
@@ -31,7 +31,7 @@ const LoginRegister = () => {
 
                 <div className="bottomContainer3">
                     <h3>Don't have an account?</h3>
-                    <button>SIGN UP FOR SPOTIFY</button>
+                    <Link>SIGN UP FOR SPOTIFY</Link>
                 </div>
             </div>
 

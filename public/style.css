@@ -2,7 +2,10 @@
     font-family: MyWebFont;
     src: url(./fonts/circularstd-black-webfont.woff) format('woff2')
 }
-
+@font-face {
+    font-family: MyWebFontThing;
+    src: url(./fonts/circularstd-light-webfont.woff2) format('woff2');
+}
 html, body, #app {
     height: 100%;
     margin: 0;
@@ -105,10 +108,22 @@ html, body, #app {
     flex-direction: column;
     align-items: center;
 }
-.bottomContainer3 button {
+.bottomContainer3 a {
     border: 1px solid lightgray;
     width: 80%;
     height: 50px;
     background-color: transparent;
     border-radius: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    transition: .2s;
+    font-family: MyWebFontThing
+}
+
+.bottomContainer a:hover{
+    transition: .2s linear;
+    background-color:#1ed760;
 }
