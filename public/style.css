@@ -1,8 +1,14 @@
+@font-face {
+    font-family: MyWebFont;
+    src: url(./fonts/circularstd-black-webfont.woff) format('woff2')
+}
+
 html, body, #app {
     height: 100%;
     margin: 0;
-    font-family: 
+    font-family: MyWebFont;
 }
+
 
 .loginRegisterPage {
     height: 100%;
