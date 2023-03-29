@@ -1,10 +1,10 @@
 const express = require('express')
 
-const indexRouter = express.Router()
+const CLIENT_ID = '72ed8b325df848d8b1e19b4e8f4133db'
 
-indexRouter.get('/health', (req, res, next) => {
-    res.send({messaage: "I'm healthy"})
-    }
-)
 
-module.exports = indexRouter
+const apiRouter = express.Router()
+
+
+
+module.exports = apiRouter

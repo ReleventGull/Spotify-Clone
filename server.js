@@ -15,7 +15,7 @@ server.listen(PORT,() => {
     console.log("I'm listening on", PORT)
 })
 
-const indexRouter = require('./api/index')
+const apiRouter = require('./api/index')
 
-server.use('/api', indexRouter)
+server.use('/api', apiRouter)
 
