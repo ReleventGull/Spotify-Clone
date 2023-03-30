@@ -1,4 +1,4 @@
-import { grantAccess } from "../api"
+import { grantAccess } from "./api"
 
 const Access = () => {
     const authorization = async() => {
