@@ -1,8 +1,14 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { Link } from "react-router-dom"
+
 
 const LoginRegister = () => {
     const [viewPassword, setViewPassword] = useState(false)
+    
+    useEffect(() => {
+        console.log('I loaded')
+    }, [])
+
     return (
         <div className="loginRegisterPage">
             <div className="loginRegisterHeader">

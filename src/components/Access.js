@@ -1,6 +1,13 @@
-
+import { grantAccess } from "../api"
 
 const Access = () => {
+    const authorization = async() => {
+        let access = await grantAccess()
+        if (!access.success) {
+            alert("ERror granting access!")
+            return
+        }
+    }
     return (
         <div className="accesPage">
             <div className="loginRegisterHeader">
@@ -8,7 +15,7 @@ const Access = () => {
             </div>
             <div className="centerContainer">
                 <h2>It appears you do not have access!</h2>
-                <button>Grant Access</button>
+                <button onClick={async() => await grantAccess()}>Grant Access</button>
             </div>
         </div>
     )
