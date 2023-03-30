@@ -1,12 +1,14 @@
 import {useState, useEffect} from 'react'
 import { Link } from "react-router-dom"
-
+import { setAuthorizationCode } from '../api'
 
 const LoginRegister = () => {
     const [viewPassword, setViewPassword] = useState(false)
     
+
+
     useEffect(() => {
-        console.log('I loaded')
+        setAuthorizationCode(window.location.href)
     }, [])
 
     return (

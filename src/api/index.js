@@ -13,3 +13,17 @@ export const grantAccess = async() => {
         throw error
     }
 }
+
+export const setAuthorizationCode = (code) => {
+    try {
+        if (code) {
+            const [ , authorizaitonCode] = code.split("code=")
+            console.log(authorizaitonCode)
+            window.localStorage.setItem('authorization', authorizaitonCode)
+        }
+        
+    }catch(error) {
+        console.error("There was an error setting Authorization code", error)
+        throw error
+    }
+}
