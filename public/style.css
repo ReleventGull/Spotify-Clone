@@ -65,7 +65,7 @@ html, body, #app {
 
 .loginButton {
     color: black;
-    background-color:#1ed760;
+    background-color: var(--main-green);
     font-weight: bolder;
     letter-spacing: .5px;
     border: none;
@@ -121,7 +121,7 @@ html, body, #app {
 
 .bottomContainer a:hover{
     transition: .2s linear;
-    background-color:#1ed760;
+    background-color:var(--main-green);
 }
 
 .input1 input {
@@ -195,7 +195,7 @@ html, body, #app {
 }
 
 .centerContainer button {
-    background-color: #1ed760;
+    background-color: var(--main-green);
     height: 90px;
     width: 300px;
     border-radius: 500px;
@@ -205,8 +205,7 @@ html, body, #app {
 }
 .centerContainer button:hover {
     background-color: #191414;
-
-    color: #1ed760;
+    color: var(--main-green);
 }
 /************************* PRFILE PAGE******************************/
 .profilePage {
