@@ -4,19 +4,42 @@ const cors = require('cors')
 const morgan = require('morgan')
 
 
-const server = express()
+const app = express()
 
-server.use(cors())
-server.use( morgan('dev'))
-server.use(express.json())
+app.use(cors())
+app.use( morgan('dev'))
+app.use(express.json())
 
 PORT = 3500
 
-server.listen(PORT,() => {
+app.listen(PORT,() => {
     console.log("I'm listening on", PORT)
 })
 
-const apiRouter = require('./api/index')
+ 
 
-server.use('/api', apiRouter)
+
+const {CLIENT_SECRET} = process.env
+const CLIENT_ID = '72ed8b325df848d8b1e19b4e8f4133db'
+var scope = 'user-read-private user-read-email'
+
+
+
+
+
+app.get('/login', (req, res, next) => {
+    try {
+        console.log("Im here")
+        res.redirect([200, ], 'https://accounts.spotify.com/authorize' + 
+           '?response_type=code' + '&client_id=' + CLIENT_ID +
+           '&redirect_uri=' + encodeURIComponent("http://localhost:3000")
+        )
+    }catch(error) {
+        console.error("there was an erro in app loginn", error)
+        throw error
+    }
+})
+
+
+
 
