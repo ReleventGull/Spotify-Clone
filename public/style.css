@@ -211,4 +211,29 @@ html, body, #app {
 .profilePage {
     height: 100%;
     background-color: var(--main-black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.topContainerProfile {
+    color: white;
+    width: 95%;
+    height: 40%;
+    background-color: rgba(169, 169, 169, 0.623);
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.profilePicture {
+    height: 300px;
+    width: 300px;
+    border-radius: 500px;
+    box-shadow: 0 0 100px 0 black;
+    margin-left: 50px;
+}
+
+.display_name {
+    font-size: 10em;
+    margin: 0;
 }
