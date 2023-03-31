@@ -9,6 +9,7 @@ const Profile = () => {
         }
     }, [])
     
+    
     return (
         <div className="profilePage">
 

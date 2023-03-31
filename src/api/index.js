@@ -27,3 +27,18 @@ export const setAuthorizationCode = (code) => {
         throw error
     }
 }
+
+export const fetchProfile = async(token) => {
+    try {
+        const response = await fetch('https://api.spotify.com/v1/me', {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(result => result.json())
+        return response
+    }catch(error) {
+        console.error("There was an error fetching the users profile", error)
+        throw error
+    }
+}
