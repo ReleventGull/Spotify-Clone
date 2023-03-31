@@ -65,7 +65,7 @@ html, body, #app {
 
 .loginButton {
     color: black;
-    background-color:#1ed760;
+    background-color: var(--main-green);
     font-weight: bolder;
     letter-spacing: .5px;
     border: none;
@@ -121,7 +121,7 @@ html, body, #app {
 
 .bottomContainer a:hover{
     transition: .2s linear;
-    background-color:#1ed760;
+    background-color:var(--main-green);
 }
 
 .input1 input {
@@ -195,7 +195,7 @@ html, body, #app {
 }
 
 .centerContainer button {
-    background-color: #1ed760;
+    background-color: var(--main-green);
     height: 90px;
     width: 300px;
     border-radius: 500px;
@@ -205,11 +205,35 @@ html, body, #app {
 }
 .centerContainer button:hover {
     background-color: #191414;
-
-    color: #1ed760;
+    color: var(--main-green);
 }
 /************************* PRFILE PAGE******************************/
 .profilePage {
     height: 100%;
     background-color: var(--main-black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.topContainerProfile {
+    color: white;
+    width: 95%;
+    height: 40%;
+    background-color: rgba(169, 169, 169, 0.623);
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.profilePicture {
+    height: 300px;
+    width: 300px;
+    border-radius: 500px;
+    box-shadow: 0 0 100px 0 black;
+    margin-left: 50px;
+}
+
+.display_name {
+    font-size: 10em;
+    margin: 0;
 }
