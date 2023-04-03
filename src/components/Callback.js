@@ -8,12 +8,13 @@ const Callback = () => {
     useEffect(() => {
         let url = window.location.href
         let otherUrl = window.location.search
-        console.log(otherUrl)
+
         if (url.includes("code=")) {
-            setAuthorizationCode(window.location.href)
+            let response = setAuthorizationCode(window.location.href)
+            console.log("Confirmed Token", response)
             setTimeout(() => {
                 navigate('/spotify/profile')
-            }, 3000)
+            }, 300)
         }
     }, [])
     

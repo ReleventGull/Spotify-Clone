@@ -13,10 +13,8 @@ const App = () => {
     const checkToken = async() => {
         const url = window.location.href
         if (url.includes('code=')) return
-        console.log(token)
         if (token) {
             const response = await fetchProfile(token)
-            console.log(response)
             if (response.error) {
                 navigate('/access')
             }
@@ -36,7 +34,7 @@ const App = () => {
         <Route path='callback' element={<Callback />}/>
         <Route path='access' element={<Access token={token} />}/>
             <Route path='spotify/*' element={<Application theme={theme} />}>
-                <Route path='profile'  element={<Profile token={token} />}/>
+                <Route path='profile'  element={<Profile />}/>
             </Route>
         </Routes>
     )

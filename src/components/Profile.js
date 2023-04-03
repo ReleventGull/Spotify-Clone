@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
 import { fetchProfile } from "../api"
 
-const Profile = ({token}) => {
+const Profile = () => {
     const [profile, setProfile] = useState(null)
 
     const fetchUserData = async() => {
-        console.log("TOKEN AGAIN", token)
-    const response = await fetchProfile(token)
-    console.log('response', response)
-    setProfile(response)
+        const token = localStorage.getItem('authorization')
+        const response = await fetchProfile(token)
+        console.log('response', response)
+        setProfile(response)
 }
 
 useEffect(() => {
