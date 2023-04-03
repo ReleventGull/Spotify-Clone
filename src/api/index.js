@@ -1,11 +1,17 @@
 const BASE_URL = "http://localhost:3500"
-const {CLIENT_SECRET} = process.env
+const CLIENT_SECRET = '403a4dbfb2bd4669988951704ec483a4'
 const CLIENT_ID = '72ed8b325df848d8b1e19b4e8f4133db'
-
+const TOKEN = 'https://accounts.spotify.com/api/token'
 
 export const grantAccess = async() => {
     try {
-        const querystring = 'https://accounts.spotify.com/authorize' + '?response_type=code' + '&client_id=' + CLIENT_ID + '&redirect_uri=' + encodeURIComponent("http://localhost:3000/callback")
+        const querystring = 'https://accounts.spotify.com/authorize' + 
+        '?response_type=code' + 
+        '&client_id=' + CLIENT_ID + 
+        '&scope=user-read-email user-read-private' + 
+        '&show_dialog=true' + 
+        '&redirect_uri=' + 
+        encodeURI("http://localhost:3000/callback")
         window.location.href = querystring
         return true
     }catch(error) {
@@ -13,24 +19,40 @@ export const grantAccess = async() => {
         throw error
     }
 }
-
+function handleAccessToken() {
+    if (this.status == 200) {
+        let data = JSON.parse(this.responseText)
+        console.log(data)
+        localStorage.setItem('authorization', data.access_token)
+    }
+}
 export const setAuthorizationCode = (code) => {
     try {
         if (code) {
             const [ , authorizaitonCode] = code.split("code=")
-            window.localStorage.setItem('authorization', authorizaitonCode)
+            let body = 'grant_type=authorization_code'
+            body += '&code=' + authorizaitonCode
+            body += '&redirect_uri=http://localhost:3000/callback' 
+            body += '&client_id=' + CLIENT_ID
+            body += '&client_secret' + CLIENT_SECRET
+            let xhr = new XMLHttpRequest()
+            xhr.open("POST", TOKEN, true) 
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+            xhr.setRequestHeader('Authorization', 'Basic ' + btoa(CLIENT_ID + ':' + CLIENT_SECRET))
+            xhr.send(body)
+            xhr.onload = handleAccessToken
         }
-        
     }catch(error) {
         console.error("There was an error setting Authorization code", error)
         throw error
     }
 }
 
+
+
 export const fetchProfile = async(token) => {
-    try {
-        token = 'BQAZ09vGmZAM6iChzue3SL0UJ5JDueEMm4Z5fvyTjZwN0GFZu6XDQi4azDblRfe_F266iNpD4Vg7bX3nHThULfhEYxZ_UtFQFJcrFgk7pGeZEGNBIJ6cETrKaOS2lsl7mUMnCGv56BRLNwtNv8en0K15LWkuMx9UgP1F14_JnC0F8bgd-jA'
-        const response = await fetch('https://api.spotify.com/v1/me', {
+    try {  
+       const response = await fetch('https://api.spotify.com/v1/me', {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${token}`

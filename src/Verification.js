@@ -1,24 +1,23 @@
 import { useState, useEffect,  } from 'react'
 import Access from './Access'
-import { LoginRegister, Profile, Callback } from './components/index'
+import { LoginRegister, Callback, Profile } from './components/index'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { fetchProfile } from './api'
-
+import Application from './Application'
 const App = () => {
     const navigate = useNavigate()
+    const [token, setToken] = useState(window.localStorage.getItem('authorization') || '')
     const [theme, setTheme] = useState('black')
 
     
     const checkToken = async() => {
         const url = window.location.href
         if (url.includes('code=')) return
-        let auth = localStorage.getItem('authorization')
-        if (auth) {
-            console.log(auth)
-            const response = await fetchProfile(auth)
+        console.log(token)
+        if (token) {
+            const response = await fetchProfile(token)
             console.log(response)
             if (response.error) {
-                localStorage.removeItem('authorization')
                 navigate('/access')
             }
         }else {
@@ -34,11 +33,11 @@ const App = () => {
   
     return (
         <Routes>
-            <Route path='/callback' element={<Callback />}/>
-        <Route path='/access' element={<Access />}/>
-        <Route path='/profile' element={<Profile theme={theme} />}/> 
-        
-        
+        <Route path='callback' element={<Callback />}/>
+        <Route path='access' element={<Access token={token} />}/>
+            <Route path='spotify/*' element={<Application theme={theme} />}>
+                <Route path='profile'  element={<Profile token={token} />}/>
+            </Route>
         </Routes>
     )
 }
