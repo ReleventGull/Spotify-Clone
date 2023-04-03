@@ -1,13 +1,23 @@
-import { grantAccess } from "./api"
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { fetchProfile, grantAccess } from "./api"
 
-const Access = () => {
-    const authorization = async() => {
-        let access = await grantAccess()
-        if (!access.success) {
-            alert("Error granting access!")
-            return
+
+const Access = ({token}) => {
+    const navigate = useNavigate()
+    
+    const verifyToken = async() => {
+        if(token) {
+            const response =  await fetchProfile(token)
+            if(!response.error) {
+            navigate('/spotify/profile')
         }
-    }
+    }   
+}
+useEffect(() => {
+    verifyToken()
+}, [])
+    
     return (
         <div className="accesPage">
             <div className="loginRegisterHeader">
@@ -15,7 +25,7 @@ const Access = () => {
             </div>
             <div className="centerContainer">
                 <h2>Click below to grant access!</h2>
-                <button onClick={async() => await grantAccess()}>Grant Access</button>
+                <button onClick={async() => await grantAccess   ()}>Grant Access</button>
             </div>
         </div>
     )

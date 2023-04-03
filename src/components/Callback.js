@@ -7,11 +7,13 @@ const Callback = () => {
 
     useEffect(() => {
         let url = window.location.href
+        let otherUrl = window.location.search
+        console.log(otherUrl)
         if (url.includes("code=")) {
             setAuthorizationCode(window.location.href)
             setTimeout(() => {
-                navigate('/profile')
-            }, 2000)
+                navigate('/spotify/profile')
+            }, 3000)
         }
     }, [])
     
