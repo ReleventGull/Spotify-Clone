@@ -1,4 +1,4 @@
-import { json } from "react-router-dom"
+
 
 const BASE_URL = "http://localhost:3500"
 const CLIENT_SECRET = '403a4dbfb2bd4669988951704ec483a4'
@@ -10,7 +10,7 @@ export const grantAccess = async() => {
         const querystring = 'https://accounts.spotify.com/authorize' + 
         '?response_type=code' + 
         '&client_id=' + CLIENT_ID + 
-        '&scope=user-read-email user-read-private user-library-read' + 
+        '&scope=user-read-email user-read-private user-library-read user-top-read' + 
         '&show_dialog=true' + 
         '&redirect_uri=' + 
         encodeURI("http://localhost:3000/callback")
@@ -67,18 +67,16 @@ export const fetchProfile = async(token) => {
     }
 }
 
-const fetchUserTracks = async({token, limit, offset}) => {
+export const fetchUserTopItems = async({token, limit, offset, item}) => {
     try {
-        const respones = await fetch('https://api.spotify.com/v1/me/tracks', {
+
+        const response = await fetch(`https://api.spotify.com/v1/me/top/${item}?offset=${offset}&limit=${limit}`, {
             method: "GET",
             headers: {
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({
-                limit: limit, 
-                offset: offset
-            })
-        })
+        }).then(result => result.json())
+        return response
     }catch(error) {
         console.error('There was an error getting saved user tracks', error)
         throw error
