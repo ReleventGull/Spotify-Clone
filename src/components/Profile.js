@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { fetchProfile } from "../api"
+import { fetchProfile, fetchUserTracks } from "../api"
 
 const Profile = () => {
     const [profile, setProfile] = useState(null)

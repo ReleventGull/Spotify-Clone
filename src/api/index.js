@@ -1,3 +1,5 @@
+import { json } from "react-router-dom"
+
 const BASE_URL = "http://localhost:3500"
 const CLIENT_SECRET = '403a4dbfb2bd4669988951704ec483a4'
 const CLIENT_ID = '72ed8b325df848d8b1e19b4e8f4133db'
@@ -8,7 +10,7 @@ export const grantAccess = async() => {
         const querystring = 'https://accounts.spotify.com/authorize' + 
         '?response_type=code' + 
         '&client_id=' + CLIENT_ID + 
-        '&scope=user-read-email user-read-private' + 
+        '&scope=user-read-email user-read-private user-library-read' + 
         '&show_dialog=true' + 
         '&redirect_uri=' + 
         encodeURI("http://localhost:3000/callback")
@@ -49,7 +51,7 @@ export const setAuthorizationCode = (code) => {
 }
 
 
-
+/*********************************************************Profile******************************************** */
 export const fetchProfile = async(token) => {
     try {  
        const response = await fetch('https://api.spotify.com/v1/me', {
@@ -61,6 +63,24 @@ export const fetchProfile = async(token) => {
         return response
     }catch(error) {
         console.error("There was an error fetching the users profile", error)
+        throw error
+    }
+}
+
+const fetchUserTracks = async({token, limit, offset}) => {
+    try {
+        const respones = await fetch('https://api.spotify.com/v1/me/tracks', {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                limit: limit, 
+                offset: offset
+            })
+        })
+    }catch(error) {
+        console.error('There was an error getting saved user tracks', error)
         throw error
     }
 }
