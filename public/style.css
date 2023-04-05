@@ -16,7 +16,7 @@ html, body, #app {
 }
 
 :root {
-    --main-black: #191414;
+    --main-black: black;
     --main-green: #1ed760;
 }
 
@@ -267,6 +267,7 @@ html, body, #app {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
 }
 .topContainerProfile {
     color: white;
@@ -289,4 +290,37 @@ html, body, #app {
 .display_name {
     font-size: 10em;
     margin: 0;
+}
+
+.topArtistsContainer {
+    width: 100%;
+    color: white;
+}
+
+.artistsContainer {
+    width: 100%;
+    height: 350px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.artistsBox:first-child {
+    margin-left: 20px;
+}
+
+.artistsBox {
+    background-image: linear-gradient(black, rgba(169, 169, 169, 0.179))
+}
+
+.artistsBox img {
+    width: 50px;
+    height: 50px
+} 
+
+.artistsBox {
+    height: 95%;
+    width: 250px;
+    background-color: black;
+    border-radius: 15px;
 }

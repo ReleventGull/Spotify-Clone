@@ -11,6 +11,7 @@ const Profile = () => {
         const tracks = await fetchUserTopItems({token, limit: 4, offset: 0, item: 'tracks'})
         const artists = await fetchUserTopItems({token, limit: 6, offset: 0, item: 'artists'})
         console.log(artists)
+        setArtists(artists)
         setUserTrack(tracks)
         setProfile(response)
 }
@@ -29,6 +30,19 @@ useEffect(() => {
                         <h1 className="display_name">{profile.display_name}</h1>
                         <p>{profile.followers.total} Follower{profile.followers.total > 1 ? 's' : null}</p>
                     </div>
+                </div>
+                <div className="topArtistsContainer">
+                <h1>Top artists this month</h1>
+                <div className="artistsContainer">
+                    {
+                        artists.items.map(art => 
+                            <div className="artistsBox">
+                                <img src={art.images[0].url}/>
+
+                            </div>
+                        )
+                    }
+                </div>
                 </div>
             </div>
         
