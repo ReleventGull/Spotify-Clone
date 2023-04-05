@@ -37,8 +37,12 @@ useEffect(() => {
                     {
                         artists.items.map(art => 
                             <div className="artistsBox">
+                                
                                 <img src={art.images[0].url}/>
-
+                                <div className="artistNames">
+                                    <h3>{art.name}</h3>
+                                    <h4>{art.type[0].toUpperCase() + art.type.slice(1)}</h4>
+                                </div>
                             </div>
                         )
                     }
