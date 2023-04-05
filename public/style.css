@@ -218,6 +218,7 @@ html, body, #app {
 }
 .navBar {
     position: relative;
+    min-width: 350px;
     width: 350px;
     background-color: black;
     display: flex;
@@ -337,4 +338,83 @@ html, body, #app {
 .artistNames {
     height: 20%;
     width: 85%;
+}
+.artistNames h4 {
+    font-family: MyWebFontThing;
+    color: gray;
+}
+
+.topTracksContainer {
+    width: 100%;
+    height: 600px;
+}
+
+.tracksContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 10px;
+}
+.indexBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+}
+.indexBox h2 {
+    margin: 0;
+}
+.trackBox {
+    display: flex;
+    width: 95%;
+    height: 60px;
+    gap: 20px;
+    align-items: center;
+    transition: .2s;
+}
+
+.trackBox:hover {
+    background-color: rgba(169, 169, 169, 0.253);
+    transition: .2s;
+    border-radius: 10px;
+}
+
+.topTrackImg {
+    width: 50px;
+    height: 50px;
+}
+
+.trackNames {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-width: 400px;
+    width: 400px;
+}
+.trackNames h2 {
+    margin: 0
+}
+.trackNames h4 {
+    margin: 0;
+    color: gray;
+    font-family: MyWebFontThing;
+}
+.albumName h4 {
+    margin: 0;
+}
+.albumName {
+    margin-left: 400px;
+    color: gray;
+    font-family: MyWebFontThing;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    min-width: 300px;
+    width: 400px
+}
+.songLength h4 {
+    margin: 0;
+    color: rgb(210, 207, 207);
+    font-family: MyWebFontThing
 }
