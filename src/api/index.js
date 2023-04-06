@@ -82,3 +82,18 @@ export const fetchUserTopItems = async({token, limit, offset, item}) => {
         throw error
     }
 }
+
+export const fetchUsersPlaylist = async ({token, limit, offset}) => {
+    try {
+        const response = await fetch(`https://api.spotify.com/v1/me/playlists??offset=${offset}&limit=${limit}`, {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+        }).then(result => result.json())
+        return response
+    }catch(error) {
+        console.error('There was an error fetching using playlists', error)
+        throw error
+    }
+}

@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react"
-import { fetchProfile, fetchUserTopItems } from "../api"
+import { fetchProfile, fetchUserTopItems, fetchUsersPlaylist } from "../api"
 
 const Profile = () => {
     const [profile, setProfile] = useState(null)
     const [tracks, setUserTrack] = useState(null)
     const [artists, setArtists] = useState(null)
+    const [playlists, setPlaylists] = useState(null)
     
     const fetchUserData = async() => {
         const token = localStorage.getItem('authorization')
         const response = await fetchProfile(token)
         const tracks = await fetchUserTopItems({token, limit: 4, offset: 0, item: 'tracks'})
-        const artists = await fetchUserTopItems({token, limit: 6, offset: 0, item: 'artists'})
-        console.log(tracks)
+        const artists = await fetchUserTopItems({token, limit: 8, offset: 0, item: 'artists'})
+        const playlists = await fetchUsersPlaylist({token: token, limit: 8, offset: 0})
+        console.log(playlists)
         setArtists(artists)
         setUserTrack(tracks)
         setProfile(response)
+        setPlaylists(playlists)
 }
 
     const convertTrackTime = (ms) => {
@@ -92,6 +95,32 @@ useEffect(() => {
                         }
                     </div>
                 </div>
+                
+                <div className="mainPlayerlistsContainer">
+                    <h1>Playlists</h1>
+                    
+                    <div className="playlistsContainer">
+                    {
+                            playlists.items.map(item =>
+                                <div className="playerlistBox">
+                                    <div className="imageBox">
+                                       {item.images.length > 1 ? 
+                            
+                                        <img className="playlistsImage" src={item.images[0].url}/>
+                                     :
+                                     <div className="playstListsImage"/>
+                                     }
+                                    </div>
+                                    <div className="playlistsNameBox">
+                                    <h3>{item.name}</h3>
+                                    </div>
+                                    
+                                </div>
+                                )
+                        }
+                    </div>
+                </div>
+                
                 </div>
             </div>
         

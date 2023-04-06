@@ -346,7 +346,7 @@ html, body, #app {
 
 .topTracksContainer {
     width: 100%;
-    height: 600px;
+
 }
 
 .tracksContainer {
@@ -417,4 +417,55 @@ html, body, #app {
     margin: 0;
     color: rgb(210, 207, 207);
     font-family: MyWebFontThing
+}
+
+.mainPlayerlistsContainer {
+    height: 400px;
+    width: 100%;
+
+}
+.playlistsContainer {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    gap: 20px;
+
+}
+
+.playerlistBox {
+    background-color: rgba(169, 169, 169, 0.179);
+    height: 95%;
+    min-width: 250px;
+    width: 250px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: .2s;
+}
+.playerlistBox:hover {
+    background-color: rgba(72, 0, 0, 0.585);
+    transition: .2s;
+}
+
+.playerlistBox:first-child {
+    margin-left: 20px;
+}
+
+.playlistsImage {
+    width: 80%;
+    height: 80%;
+    background-color: gray;
+}
+.imageBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    height: 200px;
+}
+.playlistsNameBox {
+    width: 80%;
+    height: 80%;
 }
