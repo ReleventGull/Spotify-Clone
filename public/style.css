@@ -312,7 +312,7 @@ html, body, #app {
 
 
 
-.artistsBox img {
+.artistsImages {
     width: 170px;
     height: 170px;
     border-radius: 1000px;
@@ -320,6 +320,7 @@ html, body, #app {
 
 .artistsBox {
     height: 95%;
+    min-width: 250px;
     width: 250px;
     background-image: linear-gradient(black, rgba(169, 169, 169, 0.179));
     border-radius: 15px;
@@ -335,13 +336,27 @@ html, body, #app {
     transition: .2s;
 }
 
+.artistsBox:hover > div > div > img{
+    transition: .2s;    
+    opacity: 1;
+    width: 50px;
+    height: 50px;
+}
+
 .artistNames {
     height: 20%;
     width: 85%;
+    white-space: nowrap;
 }
 .artistNames h4 {
     font-family: MyWebFontThing;
     color: gray;
+    margin: 0;
+
+}
+
+.artistNames h3 {
+    margin-bottom: 0
 }
 
 .topTracksContainer {
@@ -468,4 +483,32 @@ html, body, #app {
 .playlistsNameBox {
     width: 80%;
     height: 80%;
+}
+.playerButtonBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.playButton {
+    width: 0px;
+    height: 0px;
+    transition: .1s;
+}
+
+.playButton:hover {
+    transition: .1s;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.trackBox:hover > div >img {
+    width: 50px;
+    height: 50px;
+}
+
+.trackBox:hover > div > .trackNum {
+    opacity: 0;
 }
