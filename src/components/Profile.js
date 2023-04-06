@@ -59,10 +59,13 @@ useEffect(() => {
                     {
                         artists.items.map(art => 
                             <div className="artistsBox">
-                                <img src={art.images[0].url}/>
+                                <img className='artistsImages' src={art.images[0].url}/>
                                 <div className="artistNames">
                                     <h3>{art.name}</h3>
-                                    <h4>{art.type[0].toUpperCase() + art.type.slice(1)}</h4>
+                                        <div className="playerButtonBox">
+                                            <h4>{art.type[0].toUpperCase() + art.type.slice(1)}</h4>
+                                            <img className="playButton"src='/images/Spotify-Play-Button.png' />
+                                        </div>                                 
                                 </div>
                             </div>
                         )
@@ -76,13 +79,14 @@ useEffect(() => {
                             tracks.items.map((tr, index) =>
                                 <div className="trackBox">
                                     <div className="indexBox">
-                                        <h2>{index + 1}</h2>
-
+                                        <h2 className="trackNum">{index + 1}</h2>
+                                        <img className="playButton"src='/images/Spotify-Play-Button.png' />
                                     </div>
                                     <img className='topTrackImg' src={tr.album.images[0].url} />
                                     <div className="trackNames">
                                         <h2>{tr.name}</h2>
                                         <h4>{tr.artists.map(art => art.name).join(', ')}</h4>
+                                        
                                     </div>
                                     <div className="albumName">
                                         <h4>{tr.album.name}</h4>
