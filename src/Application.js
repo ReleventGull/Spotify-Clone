@@ -8,7 +8,7 @@ const App = () => {
     const navigate = useNavigate()
     const [token, setToken] = useState(window.localStorage.getItem('authorization') || null)
     const [currentSong, setCurrentSong] = useState(null)
-    const [paused, setPaused ] = useState(false)
+    const [isPlaying, setIsPlaying ] = useState(false)
 
     
     const checkToken = async() => {
@@ -30,20 +30,23 @@ const App = () => {
         }, [])
 
     useEffect(() => {
-        if (token) {
-            let time = setTimeout(() => {
-                getPlayer()
-            }, 1000)
-            if (paused) {
-                clearInterval(time)
-            }
+        console.log()
+        getPlayer()
+        if (token && isPlaying) {
+         let time = setInterval(() => {
+            getPlayer()
+         }, 1000)
+         if (!isPlaying) {
+            clearInterval(time)
+         }
         }
-    }, null)
+    }, [isPlaying])
     
     const getPlayer = async() => {   
+        
         const response = await getPlayerbackState(token)
+        setIsPlaying(response.is_playing)
         setCurrentSong(response)
-
         return response
     }
   
@@ -51,7 +54,7 @@ const App = () => {
         <Routes>
         <Route path='callback' element={<Callback />}/>
         <Route path='access' element={<Access />}/>
-            <Route path='spotify/*' element={<NavBar setPaused={setPaused} paused={paused} currentSong={currentSong}/>}>
+            <Route path='spotify/*' element={<NavBar setIsPlaying={setIsPlaying} isPlaying={isPlaying} currentSong={currentSong}/>}>
                 <Route path='profile'  element={<Profile />}/>
             </Route>
         </Routes>

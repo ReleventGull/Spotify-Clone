@@ -550,7 +550,7 @@ html, body, #app {
     align-items: center;
 }
 
-.pauseButton.false {
+.pauseButton.true {
     background-image: url(/images/pausebutton.png);
     background-repeat: no-repeat;
     width: 50px;
@@ -560,7 +560,7 @@ html, body, #app {
     background-color: transparent;
     filter: invert(1)
 }
-.pauseButton.true {
+.pauseButton.false {
     background-image: url(/images/playbutton.png);
     background-repeat: no-repeat;
     width: 50px;

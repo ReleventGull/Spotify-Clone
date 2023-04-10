@@ -1,7 +1,15 @@
+import {pausePlayback, resumePlayback} from '../api'
+const PlayArea = ({currentSong, setIsPlaying, isPlaying}) => {
 
-const PlayArea = ({currentSong, paused, setPaused}) => {
-
-
+    const pausePlayPlayback = () => {
+        setIsPlaying(pre => !pre)
+        if (isPlaying) {
+            pausePlayback()
+        }else {
+            resumePlayback()
+        }
+        
+    }
     return (
         currentSong ? 
         <div className="playArea">
@@ -17,7 +25,7 @@ const PlayArea = ({currentSong, paused, setPaused}) => {
                 <div className="playAreaButtonSelection">
                     <button className="shuffleButton"></button>
                     <button className="forward Reverse"></button>
-                    <button onClick={() => setPaused(pre => !pre)}className={'pauseButton ' + paused}></button>
+                    <button onClick={() => pausePlayPlayback()}className={'pauseButton ' + isPlaying}></button>
                     <button className="forward"></button>
                     <button className="repeatButton"></button>
                 </div>
@@ -36,7 +44,38 @@ const PlayArea = ({currentSong, paused, setPaused}) => {
             </div>
         </div> 
         
-        : null
+        : 
+        <div className="playArea">
+        <div className="playBox one">
+            <img />
+            <div className="playbackNames">
+                <h2></h2>
+                <h3></h3>
+            </div>
+        </div>
+        
+        <div className="playBox two">
+            <div className="playAreaButtonSelection">
+                <button className="shuffleButton"></button>
+                <button className="forward Reverse"></button>
+                <button className={'pauseButton ' + isPlaying}></button>
+                <button className="forward"></button>
+                <button className="repeatButton"></button>
+            </div>
+            <div className='dragBar'>
+                <span>0:00</span>
+                <input type='range' />
+                <span>0:00</span>
+            </div>
+            <div>
+                
+            </div>
+        </div>
+        
+        <div className="playBox three">
+            
+        </div>
+    </div> 
         
         
         

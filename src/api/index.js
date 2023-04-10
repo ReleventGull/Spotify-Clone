@@ -100,7 +100,6 @@ export const fetchUsersPlaylist = async ({token, limit, offset}) => {
 
 export const getPlayerbackState = async (token) => {
     try {
-        console.log(token)
         const response = await fetch('https://api.spotify.com/v1/me/player', {
             headers : {
                 'Authorization': `Bearer ${token}`
@@ -115,3 +114,35 @@ export const getPlayerbackState = async (token) => {
 }
 
 
+export const pausePlayback = async() => {
+    try {
+        const token = window.localStorage.getItem('authorization')
+        const response = await fetch('https://api.spotify.com/v1/me/player/pause', {
+            method: "PUT",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(result => result.json())
+        return response
+    }catch(error){
+        console.error("There was an error pausing playback state", error)
+        throw error
+    }
+}
+
+
+export const resumePlayback = async() => {
+    try {
+        const token = window.localStorage.getItem('authorization')
+        const response = await fetch('https://api.spotify.com/v1/me/player/play', {
+            method: "PUT",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(result => result.json())
+        return response
+    }catch(error){
+        console.error("There was an error pausing playback state", error)
+        throw error
+    }
+}
