@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
 import {Link} from 'react-router-dom'
 import PlayArea from "./components/PlayArea"
-const NavBar = ({currentSong, paused, setPaused}) => {
+const NavBar = ({currentSong, isPlaying, setIsPlaying}) => {
     return (
         <>
         <div className="app2">
@@ -19,7 +19,7 @@ const NavBar = ({currentSong, paused, setPaused}) => {
         < Outlet/>
         
         </div>
-        <PlayArea paused={paused} setPaused={setPaused} currentSong={currentSong}/>
+        <PlayArea isPlaying={isPlaying} setIsPlaying={setIsPlaying} currentSong={currentSong}/>
         </>
         
 
