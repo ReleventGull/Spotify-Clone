@@ -550,7 +550,17 @@ html, body, #app {
     align-items: center;
 }
 
-.pauseButton {
+.pauseButton.false {
+    background-image: url(/images/pausebutton.png);
+    background-repeat: no-repeat;
+    width: 50px;
+    height:  50px;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    filter: invert(1)
+}
+.pauseButton.true {
     background-image: url(/images/playbutton.png);
     background-repeat: no-repeat;
     width: 50px;
@@ -610,5 +620,18 @@ html, body, #app {
 .dragBar input {
     width: 80%;
     height: 6px;
+}
+
+.playbackNames {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.playbackNames h2 {
+    margin: 0;
+}
+.playbackNames h3 {
+    margin: 0;
 }
 
