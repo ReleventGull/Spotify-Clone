@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom"
 import { fetchProfile, grantAccess } from "./api"
 
 
-const Access = ({token}) => {
+const Access = () => {
     const navigate = useNavigate()
     
     const verifyToken = async() => {
+        const token = window.localStorage.getItem('authorization')
         if(token) {
             const response =  await fetchProfile(token)
             if(!response.error) {

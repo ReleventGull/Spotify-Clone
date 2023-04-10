@@ -1,14 +1,15 @@
-import { useState } from "react"
 
-const PlayArea = ({song}) => {
- const [ms, setMs] = useState(0)
+const PlayArea = ({currentSong, paused, setPaused}) => {
+
+
     return (
+        currentSong ? 
         <div className="playArea">
             <div className="playBox one">
                 <img />
-                <div>
-                    <h2></h2>
-                    <h2></h2>
+                <div className="playbackNames">
+                    <h2>{currentSong.item.name}</h2>
+                    <h3>{currentSong.item.artists[0].name}</h3>
                 </div>
             </div>
             
@@ -16,13 +17,13 @@ const PlayArea = ({song}) => {
                 <div className="playAreaButtonSelection">
                     <button className="shuffleButton"></button>
                     <button className="forward Reverse"></button>
-                    <button className="pauseButton"></button>
+                    <button onClick={() => setPaused(pre => !pre)}className={'pauseButton ' + paused}></button>
                     <button className="forward"></button>
                     <button className="repeatButton"></button>
                 </div>
                 <div className='dragBar'>
                     <span>0:00</span>
-                    <input value={ms} max={100} onChange={(e) => setMs(e.target.value)}type='range' />
+                    <input value={currentSong.progress_ms} max={currentSong.item.duration_ms} onChange={(e) => console.log(e.target.value)}type='range' />
                     <span>0:00</span>
                 </div>
                 <div>
@@ -33,7 +34,12 @@ const PlayArea = ({song}) => {
             <div className="playBox three">
                 
             </div>
-        </div>
+        </div> 
+        
+        : null
+        
+        
+        
     )
 }
 export default PlayArea
