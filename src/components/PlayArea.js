@@ -1,4 +1,5 @@
 import {pausePlayback, resumePlayback} from '../api'
+import axios from 'axios'
 const PlayArea = ({currentSong, setIsPlaying, isPlaying}) => {
 
     const pausePlayPlayback = () => {
@@ -24,9 +25,31 @@ const PlayArea = ({currentSong, setIsPlaying, isPlaying}) => {
             <div className="playBox two">
                 <div className="playAreaButtonSelection">
                     <button className="shuffleButton"></button>
-                    <button className="forward Reverse"></button>
+                    <button onClick={ () => {
+                            axios.post('https://api.spotify.com/v1/me/player/previous', {}, {
+                                headers: {
+                                    'Authorization': `Bearer ${window.localStorage.getItem('authorization')}`
+                                }
+                            }).then(result => result.json)
+                            .catch(error => {
+                                console.log("There was an error making the skip", error)
+                                throw error
+                            })
+
+                    }}className="forward Reverse"></button>
                     <button onClick={() => pausePlayPlayback()}className={'pauseButton ' + isPlaying}></button>
-                    <button className="forward"></button>
+                    <button onClick={ () => {
+                            axios.post('https://api.spotify.com/v1/me/player/next', {}, {
+                                headers: {
+                                    'Authorization': `Bearer ${window.localStorage.getItem('authorization')}`
+                                }
+                            }).then(result => result.json)
+                            .catch(error => {
+                                console.log("There was an error making the skip", error)
+                                throw error
+                            })
+
+                    }} className="forward"></button>
                     <button className="repeatButton"></button>
                 </div>
                 <div className='dragBar'>
