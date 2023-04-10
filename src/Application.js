@@ -35,7 +35,7 @@ const App = () => {
         if (token && isPlaying) {
          let time = setInterval(() => {
             getPlayer()
-         }, 1000)
+         }, 500)
          if (!isPlaying) {
             clearInterval(time)
          }
