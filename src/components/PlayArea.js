@@ -1,7 +1,8 @@
-import {pausePlayback, resumePlayback} from '../api'
+import { useEffect, useState } from 'react'
+import {pausePlayback, resumePlayback, seekPosition} from '../api'
 import axios from 'axios'
 const PlayArea = ({currentSong, setIsPlaying, isPlaying}) => {
-
+    const [ms ,setMs] = useState(0)
     const pausePlayPlayback = () => {
         setIsPlaying(pre => !pre)
         if (isPlaying) {
@@ -11,6 +12,9 @@ const PlayArea = ({currentSong, setIsPlaying, isPlaying}) => {
         }
         
     }
+    useEffect(() => {
+        currentSong ? setMs(currentSong.progress_ms) : null
+    }, [currentSong])
     return (
         currentSong ? 
         <div className="playArea">
@@ -54,7 +58,13 @@ const PlayArea = ({currentSong, setIsPlaying, isPlaying}) => {
                 </div>
                 <div className='dragBar'>
                     <span>0:00</span>
-                    <input value={currentSong.progress_ms} max={currentSong.item.duration_ms} onChange={(e) => console.log(e.target.value)}type='range' />
+                    <input value={ms} max={currentSong.item.duration_ms} onChange={
+                        (e) => {
+                            setMs(e.target.value)
+                            seekPosition(Number(e.target.value))
+                        }
+                    
+                    }type='range' />
                     <span>0:00</span>
                 </div>
                 <div>
