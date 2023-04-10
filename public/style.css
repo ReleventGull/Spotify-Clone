@@ -13,10 +13,24 @@ html, body, #app {
 }
 #app {
     display: flex;
+    flex-direction: column;
 }
-
+.app2 {
+    margin: 0;
+    display: flex;
+    height: 92vh;
+    width: 100%;
+}
+.playArea {
+    background-color: rgba(0, 0, 0, 0.874);
+    min-height: 104px;
+    height: 104px;
+    position: sticky;
+    bottom: 0;
+    border-top: 1px solid rgba(169, 169, 169, 0.534)
+}
 :root {
-    --main-black: black;
+    --main-black: #121212;
     --main-green: #1ed760;
 }
 
@@ -269,6 +283,7 @@ html, body, #app {
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 .topContainerProfile {
     color: white;
@@ -512,3 +527,88 @@ html, body, #app {
 .trackBox:hover > div > .trackNum {
     opacity: 0;
 }
+
+/************************* PLAY AREA ***************************/
+.playArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playBox {
+    height: 80%
+}
+
+.playBox.one, .playBox.three {
+    width: 28%
+}
+
+.playBox.two {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pauseButton {
+    background-image: url(/images/playbutton.png);
+    background-repeat: no-repeat;
+    width: 50px;
+    height:  50px;
+    background-position: center;
+    border: none;
+    background-color: transparent;
+    filter: invert(1)
+}
+.forward{
+    background-image: url(/images/forward.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 35px;
+    width: 50px;
+    height:  50px;
+    filter: invert(.8);
+    border: none;
+    background-color: transparent;
+}
+
+.forward.Reverse{
+    transform: scaleX(-1)
+}
+
+.shuffleButton {
+    background-image: url(/images/shuffle.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+    width: 50px;
+    height:  50px;
+    filter: invert(.8);
+    border: none;
+    background-color: transparent;
+}
+
+.repeatButton {
+    background-image: url(/images/repeat.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+    width: 50px;
+    height:  50px;
+    filter: invert(.8);
+    border: none;
+    background-color: transparent;
+}
+.dragBar {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.685);
+    font-family: MyWebFontThing;
+}
+.dragBar input {
+    width: 80%;
+    height: 6px;
+}
+

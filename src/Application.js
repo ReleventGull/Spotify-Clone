@@ -1,8 +1,10 @@
 import { Outlet } from "react-router-dom"
 import {Link} from 'react-router-dom'
+import PlayArea from "./components/PlayArea"
 const Application = () => {
     return (
         <>
+        <div className="app2">
         <div className="navBar">
             <div className="container1Nav">
                 <div className="topBar">
@@ -12,9 +14,12 @@ const Application = () => {
                     <Link><img className='logo' src='/images/spotifyLibrary.png' /> Your Library</Link>
                 </div>
             </div>
-            
         </div>
+       
         < Outlet/>
+        
+        </div>
+        <PlayArea />
         </>
         
 
