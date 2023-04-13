@@ -9,7 +9,8 @@ const App = () => {
     const [token, setToken] = useState(window.localStorage.getItem('authorization') || null)
     const [currentSong, setCurrentSong] = useState(null)
     const [isPlaying, setIsPlaying ] = useState(false)
-
+    const [repeat, setRepeat] = useState(null)
+    const [shuffle, setShuffle] = useState(null)
     
     const checkToken = async() => {
         const url = window.location.href
@@ -47,6 +48,8 @@ const App = () => {
         const response = await getPlayerbackState(token)
         setIsPlaying(response.is_playing)
         setCurrentSong(response)
+        setShuffle(response.shuffle_state)
+        setRepeat(response.repeat_state)
         return response
     }
   
@@ -54,7 +57,7 @@ const App = () => {
         <Routes>
         <Route path='callback' element={<Callback />}/>
         <Route path='access' element={<Access />}/>
-            <Route path='spotify/*' element={<NavBar setIsPlaying={setIsPlaying} isPlaying={isPlaying} currentSong={currentSong}/>}>
+            <Route path='spotify/*' element={<NavBar shuffle={shuffle} repeat={repeat} setShuffle={setShuffle} setRepeat={setRepeat} setIsPlaying={setIsPlaying} isPlaying={isPlaying} currentSong={currentSong}/>}>
                 <Route path='profile'  element={<Profile />}/>
             </Route>
         </Routes>
