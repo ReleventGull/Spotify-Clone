@@ -176,3 +176,18 @@ export const changeRepeatMode = async(str) => {
         throw error
     }
 }
+
+export const changeShuffle = async(bool) => {
+    try {
+
+        const response = await fetch('https://api.spotify.com/v1/me/player/shuffle?state=' + bool, {
+            method: "PUT",
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('authorization')}`
+            }
+        })
+    }catch(error){
+        console.error("There was an error seeking the position", error)
+        throw error
+    }
+}

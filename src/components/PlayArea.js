@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import {pausePlayback, resumePlayback, seekPosition, changeRepeatMode} from '../api'
+import {pausePlayback, resumePlayback, seekPosition, changeRepeatMode, changeShuffle} from '../api'
 import axios from 'axios'
 const PlayArea = ({repeat, shuffle, setShuffle, setRepeat, currentSong, setIsPlaying, isPlaying}) => {
     const [ms ,setMs] = useState(0)
@@ -45,7 +45,7 @@ const PlayArea = ({repeat, shuffle, setShuffle, setRepeat, currentSong, setIsPla
             
             <div className="playBox two">
                 <div className="playAreaButtonSelection">
-                    <button className="shuffleButton"></button>
+                    <button onClick={() => changeShuffle(!shuffle)}className={"shuffleButton " + shuffle}></button>
                     <button onClick={ () => {
                             axios.post('https://api.spotify.com/v1/me/player/previous', {}, {
                                 headers: {
