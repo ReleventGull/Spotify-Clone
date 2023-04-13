@@ -161,3 +161,18 @@ export const seekPosition = async(ms) => {
         throw error
     }
 }
+
+export const changeRepeatMode = async(str) => {
+    try {
+
+        const response = await fetch('https://api.spotify.com/v1/me/player/repeat?state=' + str, {
+            method: "PUT",
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('authorization')}`
+            }
+        })
+    }catch(error){
+        console.error("There was an error seeking the position", error)
+        throw error
+    }
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import {pausePlayback, resumePlayback, seekPosition} from '../api'
+import {pausePlayback, resumePlayback, seekPosition, changeRepeatMode} from '../api'
 import axios from 'axios'
 const PlayArea = ({repeat, shuffle, setShuffle, setRepeat, currentSong, setIsPlaying, isPlaying}) => {
     const [ms ,setMs] = useState(0)
@@ -15,6 +15,23 @@ const PlayArea = ({repeat, shuffle, setShuffle, setRepeat, currentSong, setIsPla
     useEffect(() => {
         currentSong ? setMs(currentSong.progress_ms) : null
     }, [currentSong])
+    
+    const repeatClick = async() => {
+        console.log("I was click")
+        let toSend = ''
+        switch(repeat) {
+            case('off'):
+                toSend = 'context'
+                break
+            case ('context'):
+                toSend = 'track'
+                break
+            case ('track'):
+                toSend = 'off'
+        }
+        await changeRepeatMode(toSend)
+    
+    }
     return (
         currentSong ? 
         <div className="playArea">
@@ -54,7 +71,7 @@ const PlayArea = ({repeat, shuffle, setShuffle, setRepeat, currentSong, setIsPla
                             })
 
                     }} className="forward"></button>
-                    <button className={"repeatButton " + repeat}></button>
+                    <button onClick={repeatClick} className={"repeatButton " + repeat}></button>
                 </div>
                 <div className='dragBar'>
                     <span>0:00</span>
