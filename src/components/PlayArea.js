@@ -4,7 +4,6 @@ import axios from 'axios'
 const PlayArea = ({repeat, shuffle, setShuffle, setRepeat, currentSong, setIsPlaying, isPlaying}) => {
     const [ms ,setMs] = useState(0)
     const pausePlayPlayback = () => {
-        setIsPlaying(pre => !pre)
         if (isPlaying) {
             pausePlayback()
         }else {
