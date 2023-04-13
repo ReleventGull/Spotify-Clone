@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {pausePlayback, resumePlayback, seekPosition} from '../api'
 import axios from 'axios'
-const PlayArea = ({currentSong, setIsPlaying, isPlaying}) => {
+const PlayArea = ({repeat, shuffle, setShuffle, setRepeat, currentSong, setIsPlaying, isPlaying}) => {
     const [ms ,setMs] = useState(0)
     const pausePlayPlayback = () => {
         setIsPlaying(pre => !pre)
@@ -54,7 +54,7 @@ const PlayArea = ({currentSong, setIsPlaying, isPlaying}) => {
                             })
 
                     }} className="forward"></button>
-                    <button className="repeatButton"></button>
+                    <button className={"repeatButton " + repeat}></button>
                 </div>
                 <div className='dragBar'>
                     <span>0:00</span>

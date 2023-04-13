@@ -595,16 +595,27 @@ html, body, #app {
 }
 
 .repeatButton {
-    background-image: url(/images/repeat.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 30px;
     width: 50px;
     height:  50px;
-    filter: invert(.8);
     border: none;
     background-color: transparent;
 }
+
+.repeatButton.off {
+    filter: invert(.8);
+    background-image: url(/images/repeat.png);
+
+}
+.repeatButton.context {
+    background-image: url(/images/repeatOn.png);
+}
+.repeatButton.track {
+    background-image: url(/images/repeatTrack.png);
+}
+
 .dragBar {
     display: flex;
     width: 100%;
