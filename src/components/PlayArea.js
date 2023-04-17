@@ -8,12 +8,31 @@ const PlayArea = () => {
     const [shuffle, setShuffle] = useState(null)
     const [ms ,setMs] = useState(0)
     
+    const convertTrackTime = (ms) => {
+        let seconds = ms / 1000
+        let arr = []
+        ms = 300000
+        let hours = Math.floor(seconds / 3600)
+        hours >= 1  ? arr.push(hours) : (arr.length > 0 ? arr.push('0') : null)
+        seconds = Math.floor(seconds - (hours * 3600)) 
+        let minutes = Math.floor(seconds/60)
+        minutes >= 1 ? arr.push(minutes) : (arr.length > 0 ? arr.push('0') : arr.push('0'))
+        seconds = Math.floor(seconds - (minutes * 60))
+        seconds >= 1 ? arr.push(seconds) : arr.push('0')
+        return arr.map((time, index, arr) => 
+            index == 0 ? String(time) : 
+            time  < 9 ? `0${time}`
+            : String(time)
+        ).join(':')
+    }
+
     useEffect(() => {
         getPlayer()
+        console.log("Do I run twice?")
         if (isPlaying) {
          let time = setInterval(() => {
             getPlayer()
-         }, 500)
+         }, 1000)
          if (!isPlaying) {
             clearInterval(time)
          }
@@ -101,7 +120,7 @@ const PlayArea = () => {
                     <button onClick={repeatClick} className={"repeatButton " + repeat}></button>
                 </div>
                 <div className='dragBar'>
-                    <span>0:00</span>
+                    <span>{convertTrackTime(ms)}</span>
                     <input value={ms} max={currentSong.item.duration_ms} onChange={
                         (e) => {
                             setMs(e.target.value)
@@ -109,7 +128,7 @@ const PlayArea = () => {
                         }
                     
                     }type='range' />
-                    <span>0:00</span>
+                    <span>{convertTrackTime(currentSong.item.duration_ms)}</span>
                 </div>
                 <div>
                     
