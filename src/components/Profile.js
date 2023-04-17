@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { fetchProfile, fetchUserTopItems, fetchUsersPlaylist } from "../api"
 import {startResumePlayback} from '../api'
+import axios from "axios"
 const Profile = () => {
     const [profile, setProfile] = useState(null)
     const [tracks, setUserTrack] = useState(null)
@@ -11,7 +12,9 @@ const Profile = () => {
         const token = localStorage.getItem('authorization')
         const response = await fetchProfile(token)
         const tracks = await fetchUserTopItems({token, limit: 4, offset: 0, item: 'tracks'})
+       
         const artists = await fetchUserTopItems({token, limit: 8, offset: 0, item: 'artists'})
+        console.log(artists)
         const playlists = await fetchUsersPlaylist({token: token, limit: 8, offset: 0})
         setArtists(artists)
         setUserTrack(tracks)
@@ -62,7 +65,17 @@ useEffect(() => {
                                     <h3>{art.name}</h3>
                                         <div className="playerButtonBox">
                                             <h4>{art.type[0].toUpperCase() + art.type.slice(1)}</h4>
-                                            <img className="playButton"src='/images/Spotify-Play-Button.png' />
+                                            <img onClick={() => {
+                                                axios.put('https://api.spotify.com/v1/me/player/play',
+                                                {
+                                                    context_uri: art.uri,
+                                                },
+                                                {
+                                                    headers: {
+                                                      Authorization: 'Bearer ' + localStorage.getItem('authorization')
+                                                    }
+                                                })  
+                                            }}className="playButton"src='/images/Spotify-Play-Button.png' />
                                         </div>                                 
                                 </div>
                             </div>
@@ -78,7 +91,19 @@ useEffect(() => {
                                 <div className="trackBox">
                                     <div className="indexBox">
                                         <h2 className="trackNum">{index + 1}</h2>
-                                        <img onClick={async() => await startResumePlayback(tr.album.uri)}className="playButton"src='/images/Spotify-Play-Button.png' />
+                                        <img onClick={async() => 
+                                        
+                                        axios.put('https://api.spotify.com/v1/me/player/play',
+                                        {
+                                            uris: [tr.uri],
+                                        },
+                                        {
+                                            headers: {
+                                              Authorization: 'Bearer ' + localStorage.getItem('authorization')
+                                            }
+                                        }
+                                       
+                                        )}className="playButton"src='/images/Spotify-Play-Button.png' />
                                     </div>
                                     <img className='topTrackImg' src={tr.album.images[0].url} />
                                     <div className="trackNames">
