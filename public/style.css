@@ -20,6 +20,7 @@ html, body, #app {
     display: flex;
     height: 92vh;
     width: 100%;
+    background-color: rgba(0, 0, 0, 0.874);
 }
 .playArea {
     background-color: rgba(0, 0, 0, 0.874);
@@ -647,3 +648,9 @@ html, body, #app {
     margin: 0;
 }
 
+/********************************************************* HOME PAGE **********************************/
+.homePage {
+    background-color: red;
+    height: 100%;
+    width: 100%;
+}

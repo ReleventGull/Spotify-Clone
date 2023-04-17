@@ -1,6 +1,6 @@
 import { useState, useEffect,  } from 'react'
 import Access from './Access'
-import { LoginRegister, Callback, Profile } from './components/index'
+import { LoginRegister, Callback, Profile, Home } from './components/index'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { fetchProfile, getPlayerbackState } from './api'
 import NavBar from './NavBar'
@@ -59,6 +59,7 @@ const App = () => {
         <Route path='access' element={<Access />}/>
             <Route path='spotify/*' element={<NavBar shuffle={shuffle} repeat={repeat} setShuffle={setShuffle} setRepeat={setRepeat} setIsPlaying={setIsPlaying} isPlaying={isPlaying} currentSong={currentSong}/>}>
                 <Route path='profile'  element={<Profile />}/>
+                <Route path='home' element={<Home />}/>
             </Route>
         </Routes>
     )
