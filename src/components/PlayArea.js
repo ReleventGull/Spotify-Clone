@@ -1,8 +1,36 @@
 import { useEffect, useState } from 'react'
-import {pausePlayback, startResumePlayback, seekPosition, changeRepeatMode, changeShuffle} from '../api'
+import {pausePlayback, startResumePlayback, seekPosition, changeRepeatMode, changeShuffle, getPlayerbackState} from '../api'
 import axios from 'axios'
-const PlayArea = ({repeat, shuffle, setShuffle, setRepeat, currentSong, setIsPlaying, isPlaying}) => {
+const PlayArea = () => {
+    const [currentSong, setCurrentSong] = useState(null)
+    const [isPlaying, setIsPlaying ] = useState(false)
+    const [repeat, setRepeat] = useState(null)
+    const [shuffle, setShuffle] = useState(null)
     const [ms ,setMs] = useState(0)
+    
+    useEffect(() => {
+        getPlayer()
+        if (isPlaying) {
+         let time = setInterval(() => {
+            getPlayer()
+         }, 500)
+         if (!isPlaying) {
+            clearInterval(time)
+         }
+        }
+    }, [isPlaying])
+    
+    const getPlayer = async() => {   
+        const response = await getPlayerbackState(localStorage.getItem('authorization'))
+        if(response.item.name) {
+            setIsPlaying(response.is_playing)
+            setCurrentSong(response)
+            setShuffle(response.shuffle_state)
+            setRepeat(response.repeat_state)
+            return response
+        }
+    }
+
     const pausePlayPlayback = () => {
         if (isPlaying) {
             pausePlayback()
@@ -11,12 +39,12 @@ const PlayArea = ({repeat, shuffle, setShuffle, setRepeat, currentSong, setIsPla
         }
         
     }
+    
     useEffect(() => {
         currentSong ? setMs(currentSong.progress_ms) : null
     }, [currentSong])
     
     const repeatClick = async() => {
-        console.log("I was click")
         let toSend = ''
         switch(repeat) {
             case('off'):
