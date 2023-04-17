@@ -653,7 +653,32 @@ html, body, #app {
 
 /********************************************************* HOME PAGE **********************************/
 .homePage {
-    background-color: red;
     height: 100%;
     width: 100%;
+}
+.topContainerHome {
+    width: 100%;
+    height: 90px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+.topContainerHome input {
+    font-size: 1.3em;
+    height: 15%;
+    width: 380px;
+    border-radius: 500px;
+    margin-left: 60px;
+    border: none;
+    padding: 15px;
+    padding-left: 50px;
+    background-image: url(./images/songSearch.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 8%;
+    background-position-x: 10px;
+}
+.topContainerHome input:focus {
+    border: none;
+    outline: none;
 }
