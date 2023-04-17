@@ -21,7 +21,7 @@ const PlayArea = () => {
         seconds >= 1 ? arr.push(seconds) : arr.push('0')
         return arr.map((time, index, arr) => 
             index == 0 ? String(time) : 
-            time  < 9 ? `0${time}`
+            time  <= 9 ? `0${time}`
             : String(time)
         ).join(':')
     }
