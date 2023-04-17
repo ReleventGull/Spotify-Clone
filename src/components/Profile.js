@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react"
 import { fetchProfile, fetchUserTopItems, fetchUsersPlaylist } from "../api"
-
+import {startResumePlayback} from '../api'
 const Profile = () => {
     const [profile, setProfile] = useState(null)
     const [tracks, setUserTrack] = useState(null)
     const [artists, setArtists] = useState(null)
     const [playlists, setPlaylists] = useState(null)
-    
+
     const fetchUserData = async() => {
         const token = localStorage.getItem('authorization')
         const response = await fetchProfile(token)
         const tracks = await fetchUserTopItems({token, limit: 4, offset: 0, item: 'tracks'})
         const artists = await fetchUserTopItems({token, limit: 8, offset: 0, item: 'artists'})
         const playlists = await fetchUsersPlaylist({token: token, limit: 8, offset: 0})
-        console.log(playlists)
         setArtists(artists)
         setUserTrack(tracks)
         setProfile(response)
@@ -54,7 +53,6 @@ useEffect(() => {
                 </div>
                 <div className="topArtistsContainer">
                 <h1>Top artists this month</h1>
-                
                 <div className="artistsContainer">
                     {
                         artists.items.map(art => 
@@ -80,7 +78,7 @@ useEffect(() => {
                                 <div className="trackBox">
                                     <div className="indexBox">
                                         <h2 className="trackNum">{index + 1}</h2>
-                                        <img className="playButton"src='/images/Spotify-Play-Button.png' />
+                                        <img onClick={async() => await startResumePlayback(tr.album.uri)}className="playButton"src='/images/Spotify-Play-Button.png' />
                                     </div>
                                     <img className='topTrackImg' src={tr.album.images[0].url} />
                                     <div className="trackNames">

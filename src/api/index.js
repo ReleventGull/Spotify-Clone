@@ -131,14 +131,20 @@ export const pausePlayback = async() => {
 }
 
 
-export const resumePlayback = async() => {
+export const startResumePlayback = async(context) => {
     try {
+        // let queryStr = (context ? `?context_uri=${context}` : '')
+        console.log(context)
         const token = window.localStorage.getItem('authorization')
-        const response = await fetch('https://api.spotify.com/v1/me/player/play', {
+        const response = await fetch(`https://api.spotify.com/v1/me/player/play`, {
             method: "PUT",
             headers: {
-                'Authorization': `Bearer ${token}`
-            }
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify( {
+                context_uri: context
+            })
         }).then(result => result.json())
         return response
     }catch(error){

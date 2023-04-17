@@ -8,8 +8,8 @@ const NavBar = ({shuffle, repeat, setShuffle, setRepeat, currentSong, isPlaying,
         <div className="navBar">
             <div className="container1Nav">
                 <div className="topBar">
-                    <Link><img className='logo' src='/images/spotifyProfile.png' />Profile</Link>
-                    <Link><img className='logo' src='/images/spotifyHome.png' />  Home</Link>
+                    <Link to='profile' ><img className='logo'  src='/images/spotifyProfile.png' />Profile</Link>
+                    <Link to='home'> <img className='logo'  src='/images/spotifyHome.png' />  Home</Link>
                     <Link><img className='logo' src='/images/spotifySearch.png' /> Search</Link>
                     <Link><img className='logo' src='/images/spotifyLibrary.png' /> Your Library</Link>
                 </div>

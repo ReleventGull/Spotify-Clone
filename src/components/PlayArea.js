@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import {pausePlayback, resumePlayback, seekPosition, changeRepeatMode, changeShuffle} from '../api'
+import {pausePlayback, startResumePlayback, seekPosition, changeRepeatMode, changeShuffle} from '../api'
 import axios from 'axios'
 const PlayArea = ({repeat, shuffle, setShuffle, setRepeat, currentSong, setIsPlaying, isPlaying}) => {
     const [ms ,setMs] = useState(0)
@@ -7,7 +7,7 @@ const PlayArea = ({repeat, shuffle, setShuffle, setRepeat, currentSong, setIsPla
         if (isPlaying) {
             pausePlayback()
         }else {
-            resumePlayback()
+            startResumePlayback()
         }
         
     }
@@ -37,7 +37,7 @@ const PlayArea = ({repeat, shuffle, setShuffle, setRepeat, currentSong, setIsPla
             <div className="playBox one">
                 <img />
                 <div className="playbackNames">
-                    <h2>{currentSong.item.name}</h2>
+                    <h2>{currentSong.item.name  == null ? "" : currentSong.item.name}</h2>
                     <h3>{currentSong.item.artists[0].name}</h3>
                 </div>
             </div>
