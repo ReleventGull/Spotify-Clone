@@ -3,8 +3,10 @@ import {Link} from 'react-router-dom'
 import PlayArea from "./components/PlayArea"
 const NavBar = () => {
     return (
-        <>
+        
         <div className="app2">
+        
+        <div className="mainPart">
         <div className="navBar">
             <div className="container1Nav">
                 <div className="topBar">
@@ -15,12 +17,15 @@ const NavBar = () => {
                 </div>
             </div>
         </div>
-       
         < Outlet/>
+        </div>
+        
+        
+        <PlayArea />
         
         </div>
-        <PlayArea />
-        </>
+        
+        
         
 
     )
