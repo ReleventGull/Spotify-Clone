@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
 import {Link} from 'react-router-dom'
 import PlayArea from "./components/PlayArea"
-const NavBar = ({shuffle, repeat, setShuffle, setRepeat, currentSong, isPlaying, setIsPlaying}) => {
+const NavBar = () => {
     return (
         <>
         <div className="app2">
@@ -19,7 +19,7 @@ const NavBar = ({shuffle, repeat, setShuffle, setRepeat, currentSong, isPlaying,
         < Outlet/>
         
         </div>
-        <PlayArea shuffle={shuffle} repeat={repeat} setShuffle={setShuffle} setRepeat={setRepeat} isPlaying={isPlaying} setIsPlaying={setIsPlaying} currentSong={currentSong}/>
+        <PlayArea />
         </>
         
 
