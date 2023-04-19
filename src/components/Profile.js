@@ -12,9 +12,7 @@ const Profile = () => {
         const token = localStorage.getItem('authorization')
         const response = await fetchProfile(token)
         const tracks = await fetchUserTopItems({token, limit: 4, offset: 0, item: 'tracks'})
-       
         const artists = await fetchUserTopItems({token, limit: 8, offset: 0, item: 'artists'})
-        console.log(artists)
         const playlists = await fetchUsersPlaylist({token: token, limit: 8, offset: 0})
         setArtists(artists)
         setUserTrack(tracks)
@@ -66,7 +64,7 @@ useEffect(() => {
                                         <div className="playerButtonBox">
                                             <h4>{art.type[0].toUpperCase() + art.type.slice(1)}</h4>
                                             <img onClick={() => {
-                                                axios.put('https://api.spotify.com/v1/me/player/play',
+                                                axios.put('https://api.spotify.com/v1/me/player/play?device_id=' + '249292437d94ba47ef9d2dffd52e7967cf63b351',
                                                 {
                                                     context_uri: art.uri,
                                                 },
@@ -74,7 +72,7 @@ useEffect(() => {
                                                     headers: {
                                                       Authorization: 'Bearer ' + localStorage.getItem('authorization')
                                                     }
-                                                })  
+                                                })
                                             }}className="playButton"src='/images/Spotify-Play-Button.png' />
                                         </div>                                 
                                 </div>
@@ -93,7 +91,7 @@ useEffect(() => {
                                         <h2 className="trackNum">{index + 1}</h2>
                                         <img onClick={async() => 
                                         
-                                        axios.put('https://api.spotify.com/v1/me/player/play',
+                                        axios.put('https://api.spotify.com/v1/me/player/play?device_id=' + '249292437d94ba47ef9d2dffd52e7967cf63b351',
                                         {
                                             uris: [tr.uri],
                                         },
@@ -101,9 +99,9 @@ useEffect(() => {
                                             headers: {
                                               Authorization: 'Bearer ' + localStorage.getItem('authorization')
                                             }
-                                        }
-                                       
-                                        )}className="playButton"src='/images/Spotify-Play-Button.png' />
+                                        })
+                                    }
+                                        className="playButton"src='/images/Spotify-Play-Button.png' />
                                     </div>
                                     <img className='topTrackImg' src={tr.album.images[0].url} />
                                     <div className="trackNames">

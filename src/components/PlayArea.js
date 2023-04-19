@@ -27,16 +27,9 @@ const PlayArea = () => {
     }
 
     useEffect(() => {
-        getPlayer()
-        console.log("Do I run twice?")
-        if (isPlaying) {
-         let time = setInterval(() => {
+        setInterval(() => {
             getPlayer()
          }, 1000)
-         if (!isPlaying) {
-            clearInterval(time)
-         }
-        }
     }, [isPlaying])
     
     const getPlayer = async() => {   
