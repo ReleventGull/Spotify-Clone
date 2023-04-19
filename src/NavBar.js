@@ -15,6 +15,9 @@ const NavBar = () => {
                     <Link><img className='logo' src='/images/spotifySearch.png' /> Search</Link>
                     <Link><img className='logo' src='/images/spotifyLibrary.png' /> Your Library</Link>
                 </div>
+                <div className="topBar2">
+                    <Link><img className='likedLogo' src='/images/LikedIcon.png' /> Your Library</Link>
+                </div>
             </div>
         </div>
         < Outlet/>
@@ -24,10 +27,6 @@ const NavBar = () => {
         <PlayArea />
         
         </div>
-        
-        
-        
-
     )
 }
 export default NavBar

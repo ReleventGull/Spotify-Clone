@@ -36,6 +36,7 @@ const App = () => {
             <Route path='spotify/*' element={<NavBar />}>
                 <Route path='profile'  element={<Profile />}/>
                 <Route path='home' element={<Home />}/>
+                
             </Route>
         </Routes>
     )
