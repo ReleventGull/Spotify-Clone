@@ -10,7 +10,7 @@ export const grantAccess = async() => {
         const querystring = 'https://accounts.spotify.com/authorize' + 
         '?response_type=code' + 
         '&client_id=' + CLIENT_ID + 
-        '&scope=user-read-email user-read-private user-library-read user-top-read user-modify-playback-state user-read-playback-state' + 
+        '&scope=user-read-email user-read-private user-library-read user-top-read user-modify-playback-state user-read-playback-state user-read-recently-played' + 
         '&show_dialog=true' + 
         '&redirect_uri=' + 
         encodeURI("http://localhost:3000/callback")
