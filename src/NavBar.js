@@ -16,7 +16,7 @@ const NavBar = () => {
                     <Link><img className='logo' src='/images/spotifyLibrary.png' /> Your Library</Link>
                 </div>
                 <div className="topBar2">
-                    <Link><img className='likedLogo' src='/images/LikedIcon.png' /> Your Library</Link>
+                    <Link to='likedsongs'><img className='likedLogo' src='/images/LikedIcon.png' /> Your Library</Link>
                 </div>
             </div>
         </div>
