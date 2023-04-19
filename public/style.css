@@ -694,6 +694,6 @@ html, body, #app {
     display: flex;
     flex-direction: column;
 }
-.recommendedTracks {
-
+.recommendedTracks h4 {
+    cursor: pointer;
 }
