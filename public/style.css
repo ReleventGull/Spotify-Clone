@@ -727,6 +727,7 @@ html, body, #app {
     width: 100%;
     background-color: #121212;
     overflow-y: scroll;
+
 }
 .topLikedPage {
     height: 400px;
@@ -789,16 +790,124 @@ html, body, #app {
 }
 .categories {
     color: white;
-    width: 100%;
     display: flex;
     justify-content: center;
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    height: 40px;
 }
 .categoriesList {
     display: flex;
-    width: 97%;
+    width: 100%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.427);
 }
+.categoriesList h2 {
+    margin: 0
+}
+
 .likedTracks {
+    height: 500px;
     color: white;
-    margin-left: 20px;
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.likedBox {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.numberLiked {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 100%;
+    font-size: 1.3em;
+}
+
+.likedImageTitle {
+    display: flex;
+    width: 400px;
+    height: 100%;
+    align-items: center;
+    height: 100%
+}
+.likedImageTitle.track {
+    gap: 10px;
+}
+.nameArtistsTrack {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.nameArtistsTrack h3, h4 {
+    margin: 0;
+}
+.likedImage {
+    height: 60px;
+    width: 60px;
+}
+.albumLiked {
+    height: 100%;
+    width: 700px;
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.addedDate {
+    min-width: 200px;
+    width: 200px;
+}
+
+.removeLiked {
+    width: 40px;
+    height: 100%;
+
+
+}
+.removeLiked.track {
+    background-image: url(./images/heart.png);
+    background-size: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.durationLiked {
+    margin-left: 100px;
+    width: 40px;
+    height: 100%;
+}
+.durationLiked.track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.durationLiked h4 {
+    margin: 0
+}
+
+.clockDuration {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+}
+
+@media  (width < 1500px) {
+    .albumLiked {
+        display: none;
+        background-color: red;
+    }
+}
+
+@media (width < 1000px) {
+    .addedDate {
+        display: none;
+    }
 }

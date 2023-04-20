@@ -2,6 +2,7 @@ import { useState, useEffect} from "react"
 import axios from 'axios'
 const LikedSongs = () => {
     const [tracks, setTracks] = useState([])
+    console.log(tracks)
     const convertTrackTime = (ms) => {
         let seconds = ms / 1000
         let arr = []
@@ -47,47 +48,50 @@ const LikedSongs = () => {
                 <input placeholder="Search for A Song"/>
                 </div>
             </div>   
+            
             <div className="categories">
                     <div className="categoriesList">
-                    <h2>#</h2>
-                    <h2>Title</h2>
-                    <h2>Album</h2>
-                    <h2>Duration</h2>
+                        <div className="numberLiked">#</div>
+                        <div className="likedImageTitle">Title</div>
+                        <div className="albumLiked">Album</div>
+                        <div className="addedDate">Date Added</div>
+                        <div className="removeLiked"/>
+                        <div className="durationLiked icon">
+                            <img className="clockDuration" src='/images/clock.png'/>
+                        </div>
                     </div>
                 </div>
+            
             <div className="likedTracks">
                 {
                     tracks.map((tr, index) => 
-                    <div className="trackBox">
-                    <div className="indexBox">
-                        <h2 className="trackNum">{index + 1}</h2>
-                        <img onClick={async() => 
-                        
-                        axios.put('https://api.spotify.com/v1/me/player/play?device_id=' + '249292437d94ba47ef9d2dffd52e7967cf63b351',
-                        {
-                            uris: [tr.uri],
-                        },
-                        {
-                            headers: {
-                              Authorization: 'Bearer ' + localStorage.getItem('authorization')
-                            }
-                        })
-                    }
-                        className="playButton"src='/images/Spotify-Play-Button.png' />
-                    </div>
-                    <img className='topTrackImg' src={tr.track.album.images[0].url} />
-                    <div className="trackNames">
-                        <h2>{tr.track.name}</h2>
-                        <h4>{tr.track.artists.map(art => art.name).join(', ')}</h4>
-                        
-                    </div>
-                    <div className="albumName">
-                        <h4>{tr.track.album.name}</h4>
-                    </div>
-                    <div className="songLength">
-                    <h4>{convertTrackTime(tr.track.duration_ms)}</h4>
-                    </div>
-                </div>
+                        <div className="likedBox">
+                            <div className="numberLiked track">
+                                {index + 1}
+                            </div>
+                            <div className="likedImageTitle track">
+                                <img className='likedImage' src={tr.track.album.images[0].url}/>
+                                <div className="nameArtistsTrack">
+                                    <h3>{tr.track.name}</h3>
+                                    <h4>{tr.track.artists[0].name}</h4>
+                                </div>
+                            </div>
+                            
+                            <div className="albumLiked track">
+                                <h4>{tr.track.album.name}</h4>
+                            </div>
+                            
+                            <div className="addedDate track">
+                                <h4>{tr.added_at}</h4>
+                            </div>
+                            
+                            <div className="removeLiked track"/>
+
+                            <div className="durationLiked track">
+                                <h4>{convertTrackTime(tr.track.duration_ms)}</h4>
+                            </div>
+
+                        </div>
                 )}
             </div>
         </div>
