@@ -723,3 +723,82 @@ html, body, #app {
 .recommendedTracks h4 {
     cursor: pointer;
 }
+.likedPage {
+    width: 100%;
+    background-color: #121212;
+    overflow-y: scroll;
+}
+.topLikedPage {
+    height: 400px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid white;
+}
+.topLikedPage img {
+    width: 300px;
+    height: 300px;
+    margin-left: 20px;
+}
+.containerAfterImg {
+    color: white
+}
+.containerAfterImg h1 {
+    font-size: 4.5em;
+}
+.containerSearch {
+    height: 100px;
+
+    width: 90%;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.playButtonLiked {
+    width: 100px;
+    height: 100px
+}
+.leftSide {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 30%
+}
+.rightSide {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+.rightSide input {
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: rgba(211, 211, 211, 0.285);
+    border-radius: 5px;
+    color: black;
+    font-size: 1.3em;
+    background-image: url(./images/songSearch.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 8%;
+    background-position-x: 10px;
+    padding-left: 50px;
+    filter: invert(1)
+}
+.categories {
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.categoriesList {
+    display: flex;
+    width: 97%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.427);
+}
+.likedTracks {
+    color: white;
+    margin-left: 20px;
+}
