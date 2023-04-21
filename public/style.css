@@ -249,7 +249,6 @@ html, body, #app {
     flex-direction: column;
     gap: 8px;
     height: 200px;
-    margin-top: 25px;
 }
 .topBar a{
     transition: .5s;
@@ -266,10 +265,34 @@ html, body, #app {
     color: white;
     transition: .5s;
 }
+.topBar2 {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+.topBar2 a {
+    transition: .5s;
+    font-size: 1.6em;
+    color: rgba(255, 255, 255, 0.687);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    height: 50px;
+}
+.topBar2 a:hover {
+    cursor: pointer;
+    color: white;
+    transition: .5s;
+}
 .container1Nav {
     display: flex;
+    flex-direction: column;
+    gap: 60px;
     width: 90%;
     border-bottom: 1px solid gray;
+    margin-top: 30px;
 }
 .logo {
     width: 44px;
@@ -277,6 +300,10 @@ html, body, #app {
     filter: invert(1);
 }
 
+.likedLogo {
+    width: 44px;
+    height: 44px;
+}
 
 /************************* PRFILE PAGE******************************/
 .profilePage {
@@ -688,7 +715,6 @@ html, body, #app {
     margin-left: 10px;
     color:white
 }
-
 .mainBox {
     width: 100%;
     display: flex;
@@ -696,4 +722,192 @@ html, body, #app {
 }
 .recommendedTracks h4 {
     cursor: pointer;
+}
+.likedPage {
+    width: 100%;
+    background-color: #121212;
+    overflow-y: scroll;
+
+}
+.topLikedPage {
+    height: 400px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid white;
+}
+.topLikedPage img {
+    width: 300px;
+    height: 300px;
+    margin-left: 20px;
+}
+.containerAfterImg {
+    color: white
+}
+.containerAfterImg h1 {
+    font-size: 4.5em;
+}
+.containerSearch {
+    height: 100px;
+
+    width: 90%;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.playButtonLiked {
+    width: 100px;
+    height: 100px
+}
+.leftSide {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 30%
+}
+.rightSide {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+.rightSide input {
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: rgba(211, 211, 211, 0.285);
+    border-radius: 5px;
+    color: black;
+    font-size: 1.3em;
+    background-image: url(./images/songSearch.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 8%;
+    background-position-x: 10px;
+    padding-left: 50px;
+    filter: invert(1)
+}
+.categories {
+    color: white;
+    display: flex;
+    justify-content: center;
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    height: 40px;
+}
+.categoriesList {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.427);
+}
+.categoriesList h2 {
+    margin: 0
+}
+
+.likedTracks {
+    height: 500px;
+    color: white;
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.likedBox {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.numberLiked {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 100%;
+    font-size: 1.3em;
+}
+
+.likedImageTitle {
+    display: flex;
+    width: 400px;
+    height: 100%;
+    align-items: center;
+    height: 100%
+}
+.likedImageTitle.track {
+    gap: 10px;
+}
+.nameArtistsTrack {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.nameArtistsTrack h3, h4 {
+    margin: 0;
+}
+.likedImage {
+    height: 60px;
+    width: 60px;
+}
+.albumLiked {
+    height: 100%;
+    width: 700px;
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.addedDate {
+    min-width: 200px;
+    width: 200px;
+}
+
+.removeLiked {
+    width: 40px;
+    height: 100%;
+
+
+}
+.removeLiked.track {
+    background-image: url(./images/heart.png);
+    background-size: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.durationLiked {
+    margin-left: 100px;
+    width: 40px;
+    height: 100%;
+}
+.durationLiked.track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.durationLiked h4 {
+    margin: 0
+}
+
+.clockDuration {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+}
+
+@media  (width < 1500px) {
+    .albumLiked {
+        display: none;
+        background-color: red;
+    }
+}
+
+@media (width < 1000px) {
+    .addedDate {
+        display: none;
+    }
 }
